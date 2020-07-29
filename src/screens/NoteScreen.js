@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import {Text,View,StyleSheet,FlatList,TextInput} from 'react-native'
-
+import { AsyncStorage } from 'react-native';
 const NoteScreen=({navigation})=>{
   const title = navigation.state.params.itemId
 
