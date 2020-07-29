@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import {Text,View,StyleSheet,FlatList} from 'react-native'
+import {Text,View,StyleSheet,FlatList,TextInput} from 'react-native'
 
 const NoteScreen=({navigation})=>{
   const title = navigation.state.params.itemId
@@ -7,6 +7,7 @@ const NoteScreen=({navigation})=>{
     return(<View>
 
         <Text style={styles.heading}>{title}</Text>
+        <TextInput style={styles.input} placeholder="enter todo" />
         </View>
     )
 }
@@ -14,7 +15,16 @@ const styles = StyleSheet.create({
     heading:{
         fontSize:20,
         textDecorationLine:"underline",
-        
+        alignSelf:"center",
+
+    },
+    input:{
+
+    borderRadius:10,
+  backgroundColor:"red",
+    height:600,
+    width:500,
+
 
     }
 })
