@@ -2,10 +2,16 @@ import React from 'react'
 import {Text,View,Button,StyleSheet, ImageBackground} from 'react-native'
 import image from "../../assets/images/1.png"
 const Tile = (props)=>{
+  var a = props.name;
+  
     return(
         <View style={styles.items}>
    <ImageBackground style={styles.container} source={image}>
-      <Button  title={props.name} />
+      <Button  onPress={()=>{props.render('Note',{
+        itemId:a,
+     
+      });
+       }} title={props.name} />
    </ImageBackground>
 
         </View>

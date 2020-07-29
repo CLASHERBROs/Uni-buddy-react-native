@@ -4,10 +4,12 @@ import Field from "../components/field"
 import Tile from "../components/tile"
 
 
-const HomeScreen = ()=>{
+const HomeScreen = props=>{
     const [subjects,setSubject] = useState("")
  const[list,setList]=useState([])
- 
+//  {console.log(props.navigation.navigate)}
+ const abc = props.navigation.navigate
+
  return(<View>
 
 <Field subjects={subjects} onSubjectChange={newSubject=>setSubject(newSubject)} listChange={newMember=>setList(list.concat(newMember))}
@@ -21,7 +23,7 @@ const HomeScreen = ()=>{
          data={list}
          renderItem={({item})=>{
             return(
-                <Tile name={item}/>
+                <Tile render={abc} name={item}/>
             )
         }} 
             keyExtractor={(list)=>list}
