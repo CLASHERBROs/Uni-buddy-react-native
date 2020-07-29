@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
 import {Text,View,StyleSheet,FlatList} from 'react-native'
 import Field from "../components/field"
+import Tile from "../components/tile"
 
 
 const HomeScreen = ()=>{
@@ -20,14 +21,18 @@ const HomeScreen = ()=>{
          data={list}
          renderItem={({item})=>{
             return(
-                <Text>{item}</Text>
+                <Tile name={item}/>
             )
         }} 
             keyExtractor={(list)=>list}
         />
+
+
     </View>)
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  
+});
 
 export default HomeScreen
