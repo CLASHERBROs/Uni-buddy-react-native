@@ -1,13 +1,48 @@
-import React,{useState} from 'react'
-import {Text,View,StyleSheet,FlatList,TextInput} from 'react-native'
-import { AsyncStorage } from 'react-native';
+import React,{useState,useEffect} from 'react'
+import {Text,View,StyleSheet,FlatList,TextInput,AsyncStorage} from 'react-native'
 const NoteScreen=({navigation})=>{
   const title = navigation.state.params.itemId
+  const [text,setText] = useState("")
+  const save = async()=>{
 
+  try{await AsyncStorage.setItem("NoteText",text)
+  
+  
+  } catch(err){
+    alert(err)
+  }
+  }
+  
+const load = async()=>{
+  try
+  {
+   let jsonValue = await AsyncStorage.getItem("NoteText")
+   if(jsonValue!=null){
+    setText(jsonValue)
+   }
+  
+  } catch(err){
+    alert(err)
+  }
+  finally{
+    
+  }
+  }
+  
+  useEffect(()=>{
+    load();
+  },[])
     return(<View>
 
         <Text style={styles.heading}>{title}</Text>
-        <TextInput style={styles.input} placeholder="enter todo" />
+        <TextInput ed style={styles.input} placeholder="enter todo"
+        value={text}
+onEndEditing={()=>{
+save();
+  }
+}
+onChangeText={(newText)=>setText(newText)}
+ />
         </View>
     )
 }

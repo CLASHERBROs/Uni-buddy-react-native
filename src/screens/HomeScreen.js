@@ -10,7 +10,7 @@ const HomeScreen = props=>{
 //  {console.log(props.navigation.navigate)}
  const abc = props.navigation.navigate
 const save = async()=>{
-  console.log(list)
+
 try{await AsyncStorage.setItem("Subjects",JSON.stringify(list))
 
 
