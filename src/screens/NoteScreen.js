@@ -1,11 +1,11 @@
 import React,{useState,useEffect} from 'react'
-import {Text,View,StyleSheet,FlatList,TextInput,AsyncStorage} from 'react-native'
+import {Text,View,StyleSheet,FlatList,TextInput,AsyncStorage,Button} from 'react-native'
 const NoteScreen=({navigation})=>{
   const title = navigation.state.params.itemId
   const [text,setText] = useState("")
   const save = async()=>{
 
-  try{await AsyncStorage.setItem("NoteText",text)
+  try{await AsyncStorage.setItem(title,text)
   
   
   } catch(err){
@@ -16,7 +16,7 @@ const NoteScreen=({navigation})=>{
 const load = async()=>{
   try
   {
-   let jsonValue = await AsyncStorage.getItem("NoteText")
+   let jsonValue = await AsyncStorage.getItem(title)
    if(jsonValue!=null){
     setText(jsonValue)
    }
@@ -32,6 +32,12 @@ const load = async()=>{
   useEffect(()=>{
     load();
   },[])
+  const remove = async()=>{
+    try{await AsyncStorage.removeItem(title)}
+  catch(err){
+    alert(error)
+  }
+  }
     return(<View>
 
         <Text style={styles.heading}>{title}</Text>
@@ -43,6 +49,9 @@ save();
 }
 onChangeText={(newText)=>setText(newText)}
  />
+ <Button title="clear" onPress={()=>{
+remove();
+}} />
         </View>
     )
 }

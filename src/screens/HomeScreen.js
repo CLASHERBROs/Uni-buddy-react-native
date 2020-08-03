@@ -7,7 +7,6 @@ import Tile from "../components/tile"
 const HomeScreen = props=>{
     const [subjects,setSubject] = useState("")
  const[list,setList]=useState([])
-//  {console.log(props.navigation.navigate)}
  const abc = props.navigation.navigate
 const save = async()=>{
 
@@ -18,12 +17,20 @@ try{await AsyncStorage.setItem("Subjects",JSON.stringify(list))
   alert(err)
 }
 }
-// const remove = async()=>{
-//   try{await AsyncStorage.removeItem("List")}
-// catch(err){
-//   alert(error)
-// }
-// }
+const remove = async()=>{
+  try{await AsyncStorage.removeItem("List")}
+catch(err){
+  alert(error)
+}
+}
+const clearAppData = async function() {
+  try {
+      const keys = await AsyncStorage.getAllKeys();
+      await AsyncStorage.multiRemove(keys);
+  } catch (error) {
+      console.error('Error clearing app data.');
+  }
+}
 
 const load = async()=>{
   try
@@ -59,7 +66,7 @@ const load = async()=>{
          renderItem={({item})=>{
            
             return(
-                <Tile render={abc} name={item}/>
+                <Tile render={abc} name={item} />
             )
            
         }} 
@@ -70,6 +77,12 @@ save();
 }}
 title="Save list"
 />
+<Button onPress={()=>{
+clearAppData();
+}}
+title="Clear"
+/>
+
 
     </View>)
 }
