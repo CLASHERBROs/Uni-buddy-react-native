@@ -6,14 +6,16 @@ const Tile = (props)=>{
   
     return(
         <View style={styles.items}>
-   <ImageBackground style={styles.container} source={image}>
+  
      <TouchableOpacity  style={styles.btn} onPress={()=>{props.render('Note',{
         itemId:a,
      
-      });
+      }); 
        }}>
+        <ImageBackground style={styles.img} source={image}>
 
        <Text>{props.name}</Text>
+       </ImageBackground>
      </TouchableOpacity>
      
       {/* <Button color="#00000000" style={styles.btn} onPress={()=>{props.render('Note',{
@@ -21,7 +23,7 @@ const Tile = (props)=>{
      
       });
        }} title={props.name} /> */}
-   </ImageBackground>
+
 
         </View>
     )
@@ -30,9 +32,13 @@ const Tile = (props)=>{
 const styles = StyleSheet.create({
 
     btn:{
-    alignSelf:"center",
- 
-        
+     
+      height: 80,
+     flex:1,
+
+      // position: 'relative',
+      justifyContent:"center",
+      
     },
     container: {
         justifyContent:"center",
@@ -41,12 +47,21 @@ const styles = StyleSheet.create({
         position: 'relative',
         resizeMode: 'cover',
         alignItems:"center"
+
       },
-      items:{marginVertical:10,
+      items:{
+        marginVertical:10,
         height:80,
         justifyContent: 'center', 
         
       
+
+      },
+      img:{
+        justifyContent:"center",
+        alignItems:"center",
+        height: 80,
+ flex:1,
 
       }
 })
