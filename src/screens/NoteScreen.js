@@ -33,6 +33,8 @@ const load = async()=>{
     load();
   },[])
   const remove = async()=>{
+
+    setText("")
     try{await AsyncStorage.removeItem(title)}
   catch(err){
     alert(error)

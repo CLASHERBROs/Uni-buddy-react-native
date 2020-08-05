@@ -17,13 +17,9 @@ try{await AsyncStorage.setItem("Subjects",JSON.stringify(list))
   alert(err)
 }
 }
-const remove = async()=>{
-  try{await AsyncStorage.removeItem("List")}
-catch(err){
-  alert(error)
-}
-}
+
 const clearAppData = async function() {
+  setList([])
   try {
       const keys = await AsyncStorage.getAllKeys();
       await AsyncStorage.multiRemove(keys);
