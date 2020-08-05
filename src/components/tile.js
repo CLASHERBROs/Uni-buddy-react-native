@@ -1,5 +1,5 @@
 import React from 'react'
-import {Text,View,Button,StyleSheet, ImageBackground} from 'react-native'
+import {Text,View,Button,StyleSheet, ImageBackground,TouchableOpacity} from 'react-native'
 import image from "../../assets/images/1.png"
 const Tile = (props)=>{
   var a = props.name;
@@ -7,11 +7,20 @@ const Tile = (props)=>{
     return(
         <View style={styles.items}>
    <ImageBackground style={styles.container} source={image}>
-      <Button  onPress={()=>{props.render('Note',{
+     <TouchableOpacity  style={styles.btn} onPress={()=>{props.render('Note',{
         itemId:a,
      
       });
-       }} title={props.name} />
+       }}>
+
+       <Text>{props.name}</Text>
+     </TouchableOpacity>
+     
+      {/* <Button color="#00000000" style={styles.btn} onPress={()=>{props.render('Note',{
+        itemId:a,
+     
+      });
+       }} title={props.name} /> */}
    </ImageBackground>
 
         </View>
@@ -20,9 +29,9 @@ const Tile = (props)=>{
 
 const styles = StyleSheet.create({
 
-    btn:{backgroundColor:"orange",
+    btn:{
     alignSelf:"center",
-    
+ 
         
     },
     container: {
