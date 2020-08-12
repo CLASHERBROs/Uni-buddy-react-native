@@ -18,11 +18,7 @@ const Tile = (props)=>{
        </ImageBackground>
      </TouchableOpacity>
      
-      {/* <Button color="#00000000" style={styles.btn} onPress={()=>{props.render('Note',{
-        itemId:a,
-     
-      });
-       }} title={props.name} /> */}
+
 
 
         </View>
